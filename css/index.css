@@ -1,0 +1,177 @@
+body {
+  min-block-size: 100vh;
+  min-block-size: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ff-outfit), sans-serif;
+  background-color: var(--main-bg);
+  color: var(--white);
+}
+
+:root {
+  --main-bg: hsl(217, 54%, 11%);
+  --card-bg: hsl(216, 50%, 16%);
+  --line: hsl(215, 32%, 27%);
+  --white: hsl(0, 0%, 100%);
+  --soft-blue: hsl(215, 51%, 70%);
+  --cyan: hsl(178, 100%, 50%);
+  --ff-outfit: 'Outfit';
+  /* --mtop: 1rem; */
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.card {
+  /* 350 -327*/
+  margin-top: 4.1rem;
+  padding: 1.5rem;
+  inline-size: clamp(327px, 87.2vw, 350px);
+  background-color: var(--card-bg);
+  border-radius: .94rem;
+  box-shadow: 0 1.5rem 3.1rem hsl(0, 0%, 0%, .2);
+}
+.card__illustration {
+  border-radius: .5rem;
+  overflow: hidden;
+  position: relative;
+}
+.card__illustration::before {
+  content: '';
+  position: absolute;
+  inline-size: 100%;
+  block-size: 100%;
+  transition: background-color .3s ease;
+}
+
+.card__description,
+.plan__time-left,
+.card__attribution {
+  color: var(--soft-blue);
+}
+
+
+.card__title {
+  margin-top: 1.45rem;
+  font-size: 1.37rem;
+  font-weight: 600;
+  transition: color .3s ease;
+}
+.card__description {
+  margin-top: .8rem;
+  font-size: 1.005rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.plan {
+  margin-top: 1rem;
+  justify-content: space-between;
+}
+.plan__cryptocurrency,
+.plan__time-left {
+  margin-left: .4rem;
+  font-size: .95rem;
+}
+.plan__cryptocurrency {
+  font-weight: 600;
+  color: var(--cyan);
+}
+
+.card__footer {
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 1rem 0 0;
+  font-size: .96rem;
+  font-weight: 300;
+  border-top: 1px solid var(--line);
+}
+.card__author-img {
+  inline-size: 2.06rem;
+  block-size: 2.06rem;
+  border-radius: 50%;
+  border: 1px solid var(--white);
+}
+.card__author-name {
+  color: var(--white);
+  transition: color .3s ease;
+}
+
+.attribution {
+  padding: 1.5rem 0;
+  font-size: .86rem;
+  font-weight: 300;
+  text-align: center;
+  color: var(--soft-blue);
+}
+.attribution__cta {
+  margin-inline: .25rem;
+  color: var(--white);
+  position: relative;
+}
+.attribution__cta::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -.15rem;
+  inline-size: 100%;
+  block-size: .1rem;
+  background-color: currentColor;
+  transform: scale(1);
+  transition: transform .3s ease;
+}
+
+@media (width >= 600px) {
+  .card {
+    padding: 1.5rem 1.5rem 2rem;
+  }
+  .card__title {
+    margin-top: 1.5rem;
+  }
+  .card__description {
+    margin-top: 1.05rem;
+    font-size: 1.13rem;
+    line-height: 1.45;
+  }
+  .plan {
+    margin-top: 1.5rem;
+  }
+  .plan__cryptocurrency,
+  .plan__time-left {
+    font-size: 1.02rem;
+  }
+  .card__footer {
+    margin-top: 1.5rem;
+    font-size: 1.02rem;
+  }
+}
+
+*:focus-visible {
+  color: var(--cyan);
+  outline: .15rem dotted var(--cyan);
+  outline-offset: .15rem;
+}
+
+
+@media (hover:hover) {
+  .card__title:hover,
+  .card__author-name:hover,
+  .attribution__cta:hover {
+    color: var(--cyan);
+  }
+  .card__illustration:hover::before {
+    background: url('../assets/icon/icon-view.svg') no-repeat center hsl(from var(--cyan) h s l / .45);
+    cursor: pointer;
+  }
+  .attribution__cta:hover::after {
+    transform: scale(0);
+  }
+}
+
+.attribution__cta:focus-visible::after {
+  transform: scale(0);
+}
